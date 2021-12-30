@@ -1,81 +1,68 @@
 "use strict";
+// Constantes y variables
+const searchButton = document.querySelector(".js-button");
+const apiUrl = `https://api.jikan.moe/v3/search/anime?q=`;
+let favoriteAnimes = [];
+let resultAnimes = [];
+const searchBtn = document.querySelector(".js-searchButton");
+const resetBtn = document.querySelector(".js-resetButton");
+// listados:
+let favoritesList = document.querySelector(".favoritesList-js");
+let searchList = document.querySelector(".searchList-js");
+// Valor búsqueda de anime:
+const searchInput = document.querySelector(".js-input");
+let animeSearch = "";
+const showedAnimes = 50;
+const defaultImg = `assets/images/default.png`;
+// Función búsqueda de anime:
 
-// let numbers = [];
+// Fetch al Api y función que trae los 3 primeros resultados de la búsqueda:
+function getElementsApi(event) {
+  animeSearch = searchInput.value;
+  fetch(apiUrl + animeSearch)
+    .then((response) => response.json())
+    .then((data) => {
+      // resultAnimes = data.results;
+      for (let i = 0; i < showedAnimes; i++) {
+        resultAnimes.push(data.results[i]);
+      }
+      renderAnimeResults(event);
+      console.log(data);
+    });
+}
+function renderAnimeResults(event) {
+  event.preventDefault();
+  let searchListContent = "";
+  for (const anime of resultAnimes) {
+    let animeContent = "";
 
-// for (let index = 0; index < 20; index++) {
-//   if (index %2 === 0 ) {
-//     numbers.push(index);
-//   }
-// }
-
-// for (let index = 0; index < numbers.length; index++) {
-//   if (numbers[index]>10) {
-//   console.log(numbers[index]);}
-// }
-
-let adalabers = [
-  {
-    name: "María",
-    age: 29,
-    job: "diseñadora",
-  },
-  {
-    name: "Lucía",
-    age: 27,
-    job: "ingeniera",
-  },
-  {
-    name: "Susana",
-    age: 19,
-    job: "diseñadora",
-  },
-  {
-    name: "Rocío",
-    age: 32,
-    job: "actriz",
+    if ( anime.image_url ===
+      `https://cdn.myanimelist.net/images/qm_50.gif?s=e1ff92a46db617cb83bfc1e205aff620`) {
+      
+      animeContent = `
+        <li class="list-js">        
+        <h2 class="searchResult-title">${anime.title}</h2> 
+        <img class="searchResult-img" alt="${anime.title}" src="${defaultImg}">       
+        </li>`;
+    } else { animeContent = `
+        <li class="list-js">        
+        <h2 class="searchResult-title">${anime.title}</h2> 
+        <img class="searchResult-img" alt="${anime.title}" src="${anime.image_url}">       
+        </li>`;
+    }
+    searchListContent += animeContent;
+    searchList.innerHTML = searchListContent;
   }
-];
-
-
-function countAdalabers(entradaArray) {
- return entradaArray.length;
-  
-}
-console.log(countAdalabers(adalabers));
-
-function mediaAge(entradaArray) {
-  let acc = 0;
-  for (const adalaber of entradaArray) {    
-    acc += adalaber.age;  
+  for (const child of searchList.children) {
+    child.addEventListener("click", selectAnime);
   }
-  let media = acc / adalabers.length;
-   return media;
-}
-console.log(mediaAge(adalabers));
-
-function theYoungest(entradaArray) {
-let youngest = entradaArray[0].age;
-console.log(entradaArray[2].age);
- for (let index = 0; index < entradaArray.length; index++) {
-   if (youngest > entradaArray[index].age) {
-    youngest  = entradaArray[index].age;     
-   }
-   
- }
- console.log(`la menor es ${youngest}`);
-}
-theYoungest(adalabers);
-
-function selectDesigner(entradaArray) {
-  let designers = "";
-  for (let index = 0; index < entradaArray.length; index++) {
-   if (entradaArray[index].job === "diseñadora") {
-     designers += `${entradaArray[index].name}, ` ;
-   }
-    
-  }
-  console.log(`Son diseñadoras: ${designers}`);
 }
 
-selectDesigner(adalabers);
+function selectAnime(event) {
+  const selection = event.currentTarget;
+  selection.classList.toggle("selectedAnime");
+}
 
+// EVENTOS:
+
+searchBtn.addEventListener("click", getElementsApi);

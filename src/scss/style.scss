@@ -1,3 +1,59 @@
+@import "core/reset";
+
+
 body {
-  background-color:rgb(158, 0, 0);
+  background-color:rgb(163, 198, 228);
 }
+.results {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  
+  &__favorites{
+  
+    height: 100vh;
+    width: 400px;
+    text-align: center;
+    background-color: rgb(3, 16, 27);
+    border-right: 5px solid rgb(163, 198, 228);
+    
+  }
+  &__search {
+    
+    height: 100vh;
+    width: 800px;
+    text-align: center;
+    overflow-y: scroll;
+    background-color: rgb(3, 16, 27);;
+  }
+}
+.searchList-js {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 8px;
+  
+}
+.list-js {
+  color:antiquewhite;
+  background-color:rgb(3, 16, 27);
+  width: 180px;
+  height: 290px;
+}
+.searchResult-title {
+  margin-top: 2px;
+  
+  width: 100%;
+  font-size: 14px;
+}
+.searchResult-img {
+ min-width: 150px;
+ max-width: 150px;
+ min-height: 250px;
+ max-height: 250px;
+}
+.selectedAnime {
+  background-color:rgb(163, 198, 228);
+  color: rgb(3, 16, 27);
+} 

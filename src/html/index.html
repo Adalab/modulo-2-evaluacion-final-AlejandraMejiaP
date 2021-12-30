@@ -3,12 +3,33 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Dear Santa</title>
+  <title>Buscador de Anime</title>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
- 
+    <h1 class="title">Buscador de series de Anime</h1>
+
+  <section class="browser">
+    <input type="text" class="browser__input js-input"> <button
+      class="browser__button--search js-searchButton">Search</button><button
+      class="browser__button--reset js-resetButton">Reset</button>
+  </section>
+  <section class="results">
+    <article class="results__favorites">
+      <p>"Las favoritas"</p>
+      <ul class="favoritesList-js">
+
+      </ul>
+    </article>
+    <article class="results__search">
+      <p>"Búsqueda"</p>
+      
+      <ul  class="searchList-js">
+
+      </ul>
+    </article>
+  </section>
 
   <script type="text/javascript" src="./assets/js/main.js"></script>
 </body>
