@@ -3,34 +3,42 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Buscador de Anime</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Buscador de Anime</title>
 </head>
 
 <body>
-    <h1 class="title">Buscador de series de Anime</h1>
-
+  <header class="header">
+  <h1 class="header__title">Buscador de series de Anime</h1><i class="fas fa-film header__title--icon"></i>
+</header>
+<main>
   <section class="browser">
-    <input type="text" class="browser__input js-input"> <button
-      class="browser__button--search js-searchButton">Search</button><button
-      class="browser__button--reset js-resetButton">Reset</button>
+    <input class="browser__input" type="text" c js-input"> <button type="button"
+      class="browser__button js-searchButton">Search</button><button type="reset"
+      class="browser__button js-resetButton">Reset</button>
   </section>
   <section class="results">
     <article class="results__favorites">
-      <p>FAVORITAS</p>
-      <ul class="favoritesList-js">
+      <h2 class="results__favorites--title">FAVORITAS</h2>
+        <ul class="favoritesList-js">
 
-      </ul>
+        </ul>
     </article>
     <article class="results__search">
-      <p>RESULTADOS</p>
-      
-      <ul  class="searchList-js">
+      <h2 class="results__search--title">RESULTADOS</h2>
 
-      </ul>
+        <ul class="searchList-js">
+
+        </ul>
     </article>
   </section>
-
+</main>
   <script type="text/javascript" src="./assets/js/main.js"></script>
 </body>
 
