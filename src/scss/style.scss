@@ -16,6 +16,7 @@ body {
     text-align: center;
     background-color: rgb(3, 16, 27);
     border-right: 5px solid rgb(163, 198, 228);
+    overflow-y: scroll;
     
   }
   &__search {
@@ -56,4 +57,5 @@ body {
 .selectedAnime {
   background-color:rgb(163, 198, 228);
   color: rgb(3, 16, 27);
+  border-radius: 25px;
 } 
