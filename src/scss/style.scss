@@ -1,64 +1,64 @@
 @import "core/reset";
 
-
 body {
-  background-color:rgb(163, 198, 228);
+  background-color: rgb(163, 198, 228);
 }
 .header {
   height: 60px;
   display: flex;
   align-items: center;
   &__title {
-    font-family: 'Baloo Bhaijaan 2', cursive;
-    color:  rgb(3, 16, 27);
+    font-family: "Baloo Bhaijaan 2", cursive;
+    color: rgb(3, 16, 27);
     margin-top: 20px;
     margin-left: 20px;
     margin-bottom: 10px;
-    &--icon{
-      color:rgb(3, 16, 27);
+    &--icon {
+      color: rgb(3, 16, 27);
       font-size: 30px;
       margin-top: 12px;
       margin-left: 20px;
-      }
+    }
   }
 }
 .browser {
-margin-left: 50px;
-height: 40px;
-display: flex;
-align-items: center;
-&__input {
-  border: 2px solid rgb(3, 16, 27);
-  border-radius: 14px;
-  margin-right: 18px;
-  height: 25px;
-  padding: 12px;
-}
-&__button {
-  font-family: 'Baloo Bhaijaan 2', cursive;
+  margin-left: 50px;
+  height: 40px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  &__input {
+    border: 2px solid rgb(3, 16, 27);
+    border-radius: 14px;
+    margin-right: 18px;
+    height: 25px;
+    padding: 12px;
+  }
+  &__button {
+    font-family: "Baloo Bhaijaan 2", cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 70px;
-  height: 25px;
-  color:rgb(163, 198, 228);
-  background-color: rgb(3, 16, 27);
-  border: 2px solid rgb(163, 198, 228);
-  border-radius: 14px;
-  margin-right: 8px;
-}
-&__button:hover {
-  background-color: rgb(84, 125, 161);
-  color: rgb(3, 16, 27);
-  border: 2px solid rgb(3, 16, 27);
-}
+    height: 25px;
+    color: rgb(163, 198, 228);
+    background-color: rgb(3, 16, 27);
+    border: 2px solid rgb(163, 198, 228);
+    border-radius: 14px;
+    margin-right: 8px;
+  }
+  &__button:hover {
+    background-color: rgb(84, 125, 161);
+    color: rgb(3, 16, 27);
+    border: 2px solid rgb(3, 16, 27);
+  }
 }
 .results {
   margin-top: 10px;
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 100px;
-  &__favorites{
+  &__favorites {
+    margin-left: 15px;
     border-radius: 20px;
     height: 100vh;
     width: 400px;
@@ -66,23 +66,45 @@ align-items: center;
     background-color: rgb(3, 16, 27);
     border-right: 5px solid rgb(163, 198, 228);
     overflow-y: scroll;
-    
+   
+
     &--title {
       color: beige;
-      font-family: 'Baloo Bhaijaan 2', cursive;
+      font-family: "Baloo Bhaijaan 2", cursive;
     }
-    
+    &--reset {
+      margin-left: 10px;
+      font-family: "Baloo Bhaijaan 2", cursive;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 170px;
+      height: 30px;
+      color: rgb(163, 198, 228);
+      background-color: rgb(3, 16, 27);
+      border: 2px solid rgb(163, 198, 228);
+      border-radius: 14px;
+      margin-right: 8px;
+      margin-bottom: 14px;
+      cursor: pointer;
+    }
   }
+  .reset-icon {
+    color: rgb(163, 198, 228);
+    font-size: 12px;
+  }
+
   &__search {
+    margin-right: 15px;
     border-radius: 20px;
     height: 100vh;
     width: 900px;
     text-align: center;
     overflow-y: scroll;
-    background-color: rgb(3, 16, 27);;
+    background-color: rgb(3, 16, 27);
     &--title {
       color: beige;
-      font-family: 'Baloo Bhaijaan 2', cursive;
+      font-family: "Baloo Bhaijaan 2", cursive;
     }
   }
 }
@@ -92,11 +114,10 @@ align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 8px;
-  
 }
 .list-js {
-  color:antiquewhite;
-  background-color:rgb(3, 16, 27);
+  color: antiquewhite;
+  background-color: rgb(3, 16, 27);
   width: 180px;
   height: 310px;
 }
@@ -105,23 +126,23 @@ align-items: center;
   font-size: 14px;
 }
 .searchResult-title {
-  background-color:rgb(3, 16, 27);
+  background-color: rgb(3, 16, 27);
   color: rgb(102, 170, 230);
-  margin-top: 2px;  
+  margin-top: 2px;
   width: 100%;
-  font-size: 14px;
+  font-size: 13px;
   margin-top: 15px;
   border-radius: 5px;
   margin-bottom: 4px;
   padding: 3px;
 }
 .searchResult-img {
- min-width: 150px;
- max-width: 150px;
- min-height: 250px;
- max-height: 250px;
- margin-bottom: 18px;
- border-radius: 25px;
+  min-width: 150px;
+  max-width: 150px;
+  min-height: 250px;
+  max-height: 250px;
+  margin-bottom: 18px;
+  border-radius: 25px;
 }
 .selectedAnime {
   display: flex;
@@ -129,18 +150,17 @@ align-items: center;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color:rgb(163, 198, 228);
+  background-color: rgb(163, 198, 228);
   color: rgb(3, 16, 27);
   border-radius: 30px;
   margin-top: 20px;
-} 
+}
 .favlist-js {
   width: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-left: 30px;
-  
 }
 
 .favResult-title {
@@ -148,19 +168,19 @@ align-items: center;
   margin-right: 60px;
   margin-top: 2px;
   width: 10px;
-  font-size: 14px;
+  font-size: 10px;
 }
 .favResult-img {
-min-width: 90px;
- max-width: 90px;
- min-height: 180px;
- max-height: 180px;
- margin-bottom:14px;
- border-radius: 15px;
+  min-width: 90px;
+  max-width: 90px;
+  min-height: 180px;
+  max-height: 180px;
+  margin-bottom: 14px;
+  border-radius: 15px;
 }
-.deletefav-js{
+.deletefav-js {
   font-size: 20px;
-  color:rgb(163, 198, 228);  
+  color: rgb(163, 198, 228);
   margin-left: 18px;
   cursor: pointer;
 }
