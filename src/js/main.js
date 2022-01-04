@@ -46,23 +46,22 @@ function renderAnimeResults(event) {
   searchList.innerHTML = "";
   let animeContent = "";
 
+  let image = "";
   for (const anime of resultAnimes) {
-    if (anime.image_url === apiDefaultImg || anime.image_url === undefined) {
-      animeContent = `
-        <li class="list-js" data-id=${anime.mal_id} data-title="${anime.title}" data-image_url=${defaultImg}>        
-        <h3 class="searchResult-title">${anime.title}</h2> 
-        <img class="searchResult-img" alt="${anime.title}" src="${defaultImg}">       
-        </li>`;
-    } else {
-      animeContent = `
-        <li class="list-js" data-id=${anime.mal_id} data-title="${anime.title}" data-image_url=${anime.image_url}>        
-        <h3 class="searchResult-title">${anime.title}</h2> 
-        <img class="searchResult-img" alt="${anime.title}" src="${anime.image_url}">       
-        </li>`;
+    if (anime.image_url === apiDefaultImg) {
+      image = defaultImg;
     }
-    if (anime.status === "404" || apiUrl + animeSearch === undefined) {
-      animeContent = `<li class="errorMessage-js">No se han encontrado resultados de su búsqueda.</li>`;
+    else {
+      image = anime.image_url;
     }
+
+    animeContent = `
+        <li class="list-js" data-id=${anime.mal_id} data-title="${anime.title}" data-image_url=${image}>        
+        <h3 class="searchResult-title">${anime.title}</h2> 
+        <img class="searchResult-img" alt="${anime.title}" src="${image}">       
+        </li>`;
+   
+    
     searchListContent += animeContent;
     searchList.innerHTML = searchListContent;
   }
@@ -111,13 +110,21 @@ function renderFavs() {
   if (favAnimes === null) {
     favAnimes = [];
   }
+  let image = "";
   for (const fav of favAnimes) {
     let animeContent = "";
 
-    animeContent = `<li class="favlist-js" data-id="${fav.id}"  data-title="${fav.title}" data-image_url=${fav.image_url}}>        
-<h3 class="favResult-title">${fav.title}</h2> 
-<img class="favResult-img" alt="${fav.title}" src="${fav.image_url}">  <i class="far fa-times-circle deletefav-js"></i>     
-</li>`;
+    animeContent = "";
+
+    if (fav.image_url === apiDefaultImg) {
+      image = defaultImg;
+    }
+    else {
+      image = fav.image_url;
+    }
+    animeContent = `<li class="favlist-js" data-id="${fav.id}"  data-title="${fav.title}" data-image_url=${image}}>  <h3 class="favResult-title">${fav.title}</h2> 
+  <img class="favResult-img" alt="${fav.title}" src="${image}">  <i class="far fa-times-circle deletefav-js"></i>     
+  </li>`;
 
     favListContent += animeContent;
     favoritesList.innerHTML = favListContent;
