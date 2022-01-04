@@ -24,7 +24,8 @@ const apiDefaultImg = `https://cdn.myanimelist.net/images/qm_50.gif?s=e1ff92a46d
 renderFavs();
 function getElementsApi(event) {
   event.preventDefault();
-  favoriteAnimes = [];
+  
+  resultAnimes = [];
   searchList.innerHTML = "";
   animeSearch = searchInput.value;
   fetch(apiUrl + animeSearch)
@@ -41,6 +42,7 @@ function getElementsApi(event) {
 // Pinta los resultados
 function renderAnimeResults(event) {
   event.preventDefault();
+  searchListContent = "";
   searchList.innerHTML = "";
   let animeContent = "";
 
@@ -71,26 +73,37 @@ function renderAnimeResults(event) {
   }
 }
 
-// Seleccionar ánime y guardar en LocalStorage
+// SELECCIONAR ánime y guardar en LocalStorage
 
 favoriteAnimes.push(localStorageElements);
 if (localStorageElements === null) {
   localStorageElements = [];
 }
 function selectAnime(event) {
+  
   const selection = event.currentTarget;
   selection.classList.toggle("selectedAnime");
-
-  const favIndex = localStorageElements.findIndex(
-    (fav) => fav.id === selection.dataset.id
-  );
+    if (findInStorage (selection.dataset.id) >= 0) {
+    deleteFavorite(event);  
+      } else {const favIndex = localStorageElements.findIndex(
+    (fav) => fav.id === selection.dataset.id);
   if (favIndex === -1) {
-    localStorageElements.push(selection.dataset);
-    localStorage.setItem("favorite anime", JSON.stringify(localStorageElements));
-  }
-
+    localStorageElements.push(selection.dataset);;
+    localStorage.setItem( "favorite anime",JSON.stringify(localStorageElements)
+    );
+  }}
+  
   renderFavs();
 }
+function findInStorage (index) {
+  const localElements = localStorageElements.findIndex((element) => element.id === index
+  );
+  return localElements;
+
+  
+}
+
+
 // Pinta los favoritos
 function renderFavs() {
   let favListContent = "";
@@ -98,12 +111,12 @@ function renderFavs() {
   if (favAnimes === null) {
     favAnimes = [];
   }
-  for (const favs of favAnimes) {
+  for (const fav of favAnimes) {
     let animeContent = "";
-    
-    animeContent = `<li class="favlist-js" data-id="${favs.id}"  data-title="${favs.title}" data-image_url=${favs.image_url}}>        
-<h3 class="favResult-title">${favs.title}</h2> 
-<img class="favResult-img" alt="${favs.title}" src="${favs.image_url}">  <i class="far fa-times-circle deletefav-js"></i>     
+
+    animeContent = `<li class="favlist-js" data-id="${fav.id}"  data-title="${fav.title}" data-image_url=${fav.image_url}}>        
+<h3 class="favResult-title">${fav.title}</h2> 
+<img class="favResult-img" alt="${fav.title}" src="${fav.image_url}">  <i class="far fa-times-circle deletefav-js"></i>     
 </li>`;
 
     favListContent += animeContent;
@@ -138,16 +151,30 @@ function deleteFavs(event) {
   const localElements = localStorageElements.findIndex(
     (element) => element.id === deleteElement.dataset.id
   );
-  
+
   if ((selection = deleteIcon)) {
     deleteElement.remove();
   }
 
   if (localElements >= 0) {
     localStorageElements.splice(localElements, 1);
-    localStorage.setItem("favorite anime", JSON.stringify(localStorageElements));
+    localStorage.setItem( "favorite anime", JSON.stringify(localStorageElements)
+    );
   }
-  
+}
+
+// deseleccionar y borrar de favs
+
+function deleteFavorite(event) {
+  let selection = event.currentTarget;
+  const localElements = localStorageElements.findIndex(
+    (element) => element.id === selection.dataset.id
+  );
+    localStorageElements.splice(localElements, 1);
+    localStorage.setItem(
+      "favorite anime",
+      JSON.stringify(localStorageElements)
+    );
 }
 
 // reseteo de todos los favoritos:
